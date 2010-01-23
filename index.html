@@ -1,0 +1,295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>hSlides jQuery plugin</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css" media="all">
+		.accordion, .accordion *{
+			margin:0;
+			padding:0;
+		}
+		.one{
+			background:#f00;
+		}
+		.two{
+			background:#0f0;
+		}
+		.three{
+			background:#00f;
+		}
+		.four{
+			background:#ff0;
+		}
+		.five{
+			background:#0ff;
+		}
+		.active{
+			background:#f0f;
+		}
+		.accordion li{
+			cursor:pointer;
+		}
+		.accordion .active_click{
+			cursor:default;
+		}
+	</style>
+	<script src="jquery-1.4.min.js" type="text/javascript"></script>
+	<script src="jquery.hslides.js" type="text/javascript"></script>
+	<script src="jquery.hoverintent.js" type="text/javascript"></script>
+	<script src="jquery.easing.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		$(function(){
+			
+			enterFunction = function(){
+				$(this).html('ACTIVE');
+			}
+			leaveFunction = function(){
+				$(this).html('inactive');
+			}
+			$('.accordion1').hSlides({
+				totalWidth: 730, 
+				totalHeight: 140, 
+				minPanelWidth: 77, 
+				maxPanelWidth: 425
+			});
+			$('.accordion2').hSlides({
+				totalWidth: 305, 
+				totalHeight: 200, 
+				minPanelWidth: 27, 
+				maxPanelWidth: 200,
+				activeClass: 'active',
+				speed: 1500
+			});
+			$('.accordion3').hSlides({
+				totalWidth: 730, 
+				totalHeight: 140, 
+				minPanelWidth: 77, 
+				maxPanelWidth: 425,
+				midPanelWidth: 150,
+				easing: 'easeOutBounce',
+				sensitivity: 1,   
+				interval: 50,
+				timeout: 100,
+				onEnter: enterFunction,
+				onLeave: leaveFunction
+			});
+			$('.accordion4').hSlides({
+				totalWidth: 730, 
+				totalHeight: 140, 
+				minPanelWidth: 77, 
+				maxPanelWidth: 425,
+				panelPositioning: 'bottom',
+				eventHandler: 'hover',
+				panelSelector: 'span',
+				activeClass: 'active_click'
+			});
+		}
+		);
+	</script>
+</head>
+<body>
+	<h1>hSlides:</h1>
+	<pre>
+	    hSlides is an horizontal accordion navigation, sliding the panels around to reveal one of interest.
+	   
+	    Sample Configuration:
+	    // this is the minimum configuration needed
+	    $(&#x27;#accordion&#x27;).hSlides({
+	    	totalWidth: 730, 
+	    	totalHeight: 140, 
+	    	minPanelWidth: 87, 
+	    	maxPanelWidth: 425
+	    });
+	    
+	    Config Options:
+	    // Required configuration
+	    totalWidth: Total width of the accordion // default: 0
+	    totalHeight: Total height of the accordion // default: 0
+	    minPanelWidth: Minimum width of the panel (closed) // default: 0
+	    maxPanelWidth: Maximum width of the panel (opened) // default: 0
+	    // Optional configuration
+	    midPanelWidth: Middle width of the panel (centered) // default: 0
+	    speed: Speed for the animation // default: 500
+	    easing: Easing effect for the animation. Other than &#x27;swing&#x27; or &#x27;linear&#x27; must be provided by plugin // default: &#x27;swing&#x27;
+	    sensitivity: Sensitivity threshold (must be 1 or higher) // default: 3
+	    interval: Milliseconds for onMouseOver polling interval // default: 100
+	    timeout: Milliseconds delay before onMouseOut // default: 300
+	    eventHandler: Event to open panels: click or hover. For the hover option requires hoverIntent plugin &lt;http://cherne.net/brian/resources/jquery.hoverIntent.html&gt; // default: &#x27;click&#x27;
+	    panelSelector: HTML element storing the panels // default: &#x27;li&#x27;
+	    activeClass: CSS class for the active panel // default: none
+	    panelPositioning: Accordion panelPositioning: top -&gt; first panel on the bottom and next on the top, other value -&gt; first panel on the top and next to the bottom // default: &#x27;top&#x27;
+	    // Callback funtctions. Inside them, we can refer the panel with $(this).
+	    onEnter: Funtion raised when the panel is activated. // default: none
+	    onLeave: Funtion raised when the panel is deactivated. // default: none
+	    
+	    We can override the defaults with:
+	    $.fn.hSlides.defaults.easing = &#x27;easeOutCubic&#x27;;
+	    
+	   
+	</pre>
+	
+	<h1>hSlides samples:</h1>
+	<pre>
+	Standard accordion HTML structure:
+	&lt;ul class=&quot;accordion accordion1&quot;&gt;
+		&lt;li class=&quot;one&quot;&gt;&lt;h3&gt;Panel 1&lt;/h3&gt;&lt;p&gt;Text.&lt;/p&gt;&lt;/li&gt;
+		&lt;li class=&quot;two&quot;&gt;&lt;h3&gt;Panel 2&lt;/h3&gt;&lt;p&gt;Text.&lt;/p&gt;&lt;/li&gt;
+		&lt;li class=&quot;three&quot;&gt;&lt;h3&gt;Panel 3&lt;/h3&gt;&lt;p&gt;Text.&lt;/p&gt;&lt;/li&gt;
+		&lt;li class=&quot;four&quot;&gt;&lt;h3&gt;Panel 4&lt;/h3&gt;&lt;p&gt;Text.&lt;/p&gt;&lt;/li&gt;
+		&lt;li class=&quot;five&quot;&gt;&lt;h3&gt;Panel 5&lt;/h3&gt;&lt;p&gt;Text.&lt;/p&gt;&lt;/li&gt;
+	&lt;/ul&gt;
+	
+	CSS styles:
+	
+	.accordion, .accordion *{
+		margin:0;
+		padding:0;
+		list-style-type: none;
+	}
+	.one{
+		background:#f00;
+	}
+	.two{
+		background:#0f0;
+	}
+	.three{
+		background:#00f;
+	}
+	.four{
+		background:#ff0;
+	}
+	.five{
+		background:#0ff;
+	}
+	.accordion li{
+		cursor:pointer;
+	}
+	.accordion .active_click{
+		cursor:default;
+	}
+	</pre>
+	<h2>Sample 1:</h2>
+	<ul>
+		<li><strong>Minimum configuration</strong></li>
+	</ul>
+	<pre>
+	$('.accordion1').hSlides({
+		totalWidth: 730, 
+		totalHeight: 140, 
+		minPanelWidth: 87, 
+		maxPanelWidth: 425
+	});
+	</pre>
+	<ul class="accordion accordion1">
+		<li class="one"><h3>Panel 1</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
+		<li class="two"><h3>Panel 2</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
+		<li class="three"><h3>Panel 3</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
+		<li class="four"><h3>Panel 4</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
+		<li class="five"><h3>Panel 5</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
+	</ul>
+	
+		<h2>Sample 2:</h2>
+		<ul>
+			<li><strong>Different sizes</strong></li>
+			<li><strong>First panel active</strong></li>
+			<li><strong>Change active style</strong></li>
+			<li><strong>Slower</strong></li>
+		</ul>
+		<pre>
+		$('.accordion1').hSlides({
+			totalWidth: 730, 
+			totalHeight: 140, 
+			minPanelWidth: 87, 
+			maxPanelWidth: 425,
+			activeClass: 'active',
+			speed: 1500
+		});
+		
+		HTML:
+		&lt;li class=&quot;one active&quot;&gt;
+		
+		CSS:
+		.active{
+			background:#f0f;
+		}
+	</pre>
+	<ul class="accordion accordion2">
+		<li class="one active"><h3>Panel 1</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
+		<li class="two"><h3>Panel 2</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
+		<li class="three"><h3>Panel 3</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
+		<li class="four"><h3>Panel 4</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
+		<li class="five"><h3>Panel 5</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
+	</ul>
+	
+		<h2>Sample 3:</h2>
+		<ul>
+			<li><strong>Centered panels</strong></li>
+			<li><strong>Bouncing easing</strong></li>
+			<li><strong>Change hoverIntent configuration (same variable names)</strong></li>
+			<li><strong>Calling callback functions</strong></li>
+		</ul>
+		<pre>
+		enterFunction = function(){
+			$(this).html('ACTIVE');
+		}
+		leaveFunction = function(){
+			$(this).html('inactive');
+		}
+		$('.accordion1').hSlides({
+			totalWidth: 730, 
+			totalHeight: 140, 
+			minPanelWidth: 87, 
+			maxPanelWidth: 425,
+			midPanelWidth: 150,
+			easing: 'easeOutBounce', // provided by plugin http://gsgd.co.uk/sandbox/jquery/easing/
+			sensitivity: 1,   
+			interval: 50,
+			timeout: 100,
+			onEnter: enterFunction,
+			onLeave: leaveFunction
+		});
+	</pre>
+	<ul class="accordion accordion3">
+		<li class="one"><h3>Panel 1</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
+		<li class="two"><h3>Panel 2</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
+		<li class="three"><h3>Panel 3</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
+		<li class="four"><h3>Panel 4</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
+		<li class="five"><h3>Panel 5</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
+	</ul>
+	
+		<h2>Sample 4:</h2>
+		<ul>
+			<li><strong>Invert panel positioning (top to bottom)</strong></li>
+			<li><strong>Hover to active panel</strong></li>
+			<li><strong>second panel active</strong></li>
+			<li><strong>Change structure to div/span (instead of default ul/li)</strong></li>
+		</ul>
+		<pre>
+		$('.accordion1').hSlides({
+			totalWidth: 730, 
+			totalHeight: 140, 
+			minPanelWidth: 87, 
+			maxPanelWidth: 425,
+			panelPositioning: 'bottom',
+			eventHandler: 'hover',
+			panelSelector: 'span',
+			activeClass: 'active'
+		});
+		
+		HTML:
+		&lt;div class=&quot;accordion accordion4&quot;&gt;
+			&lt;span class=&quot;one active_click&quot;&gt;&lt;h3&gt;Panel 1&lt;/h3&gt;&lt;p&gt;Text.&lt;/p&gt;&lt;/span&gt;
+			&lt;span class=&quot;two&quot;&gt;&lt;h3&gt;Panel 2&lt;/h3&gt;...
+		......
+		
+	</pre>
+	<div class="accordion accordion4">
+		<span class="one"><h3>Panel 1</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></span>
+		<span class="two active_click"><h3>Panel 2</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></span>
+		<span class="three"><h3>Panel 3</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></span>
+		<span class="four"><h3>Panel 4</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></span>
+		<span class="five"><h3>Panel 5</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></span>
+	</div>
+	
+</body>
+</html>
