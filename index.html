@@ -4,9 +4,25 @@
 	<title>hSlides jQuery plugin</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<style type="text/css" media="all">
-		.accordion, .accordion *{
+	  
+		.accordion{
 			margin:0;
 			padding:0;
+			
+		}
+		.accordion li {
+		  list-style-type: none;
+		}
+		.accordion ul {
+		  margin-left: 25px;
+	    padding-left: 0;
+		}
+		.accordion ul li {
+	    
+	    list-style-type: disc;
+	  }
+		li {
+		  list-style-type: none;
 		}
 		.one{
 			background:#f00;
@@ -51,6 +67,7 @@
 				totalHeight: 140, 
 				minPanelWidth: 77, 
 				maxPanelWidth: 425
+				
 			});
 			$('.accordion2').hSlides({
 				totalWidth: 305, 
@@ -58,7 +75,8 @@
 				minPanelWidth: 27, 
 				maxPanelWidth: 200,
 				activeClass: 'active',
-				speed: 1500
+				speed: 1500,
+				panelSelector: 'li.panel'
 			});
 			$('.accordion3').hSlides({
 				totalWidth: 730, 
@@ -194,6 +212,7 @@
 			<li><strong>First panel active</strong></li>
 			<li><strong>Change active style</strong></li>
 			<li><strong>Slower</strong></li>
+			<li><strong>With internal list items, so we have a panel class to use as selector and avoid errors</strong></li>
 		</ul>
 		<pre>
 		$('.accordion1').hSlides({
@@ -202,7 +221,8 @@
 			minPanelWidth: 87, 
 			maxPanelWidth: 425,
 			activeClass: 'active',
-			speed: 1500
+			speed: 1500,
+			panelSelector: 'li.panel'
 		});
 		
 		HTML:
@@ -214,11 +234,11 @@
 		}
 	</pre>
 	<ul class="accordion accordion2">
-		<li class="one active"><h3>Panel 1</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
-		<li class="two"><h3>Panel 2</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
-		<li class="three"><h3>Panel 3</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
-		<li class="four"><h3>Panel 4</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
-		<li class="five"><h3>Panel 5</h3><p>Donec gravida posuere arcu. Nulla facilisi. Phasellus imperdiet. Vestibulum at metus. Integer euismod. Nullam placerat rhoncus sapien. Ut euismod. Praesent libero. Morbi pellentesque libero sit amet ante.</p></li>
+		<li class="one active panel"><h3>Panel 1</h3><p><ul><li>a</li><li>b</li></ul>Donec gravida posuere arcu. </p></li>
+		<li class="two panel"><h3>Panel 2</h3><p><ul><li>a</li><li>b</li></ul>Donec gravida posuere arcu. </p></li>
+		<li class="three panel"><h3>Panel 3</h3><p><ul><li>a</li><li>b</li></ul>Donec gravida posuere arcu. </p></li>
+		<li class="four panel"><h3>Panel 4</h3><p><ul><li>a</li><li>b</li></ul>Donec gravida posuere arcu. </p></li>
+		<li class="five panel"><h3>Panel 5</h3><p><ul><li>a</li><li>b</li></ul>Donec gravida posuere arcu. </p></li>
 	</ul>
 	
 		<h2>Sample 3:</h2>

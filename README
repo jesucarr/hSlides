@@ -1,3 +1,12 @@
-hSlides is an horizontal accordion navigation, sliding the panels around to reveal one of interest.
+hSlides is a jQuery horizontal accordion, sliding the panels around to reveal one of interest. It's very flexible on how to move the panels.
 
-More info at http://www.frontendmatters.com/projects/jquery-plugins/
+Configuration options:
+- Width an height configuration, including width when the panel is closed, or when no panels are open (centered).
+- Speed and easing of the animation.
+- Event triggering the animation.
+- Sensitivity threshold, interval and timeout to avoid unnecessary open/close.
+- CSS class applied to the active pannel.
+- Panel positioning:  first panel on the bottom and next on the top, or viceversa.
+- Callback functions on enter and on leave.
+
+More info and demo at http://www.frontendmatters.com/projects/jquery-plugins/hslides/

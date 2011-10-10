@@ -1,12 +1,12 @@
 /*
-* hSlides (1.0) // 2008.02.25 // <http://www.frontendmatters.com/projects/jquery-plugins/>
+* hSlides (1.0) // 2008.02.25 // <http://www.frontendmatters.com/projects/jquery-plugins/hslides/>
 * 
 * REQUIRES jQuery 1.2.3+ <http://jquery.com/>
 * 
 * Copyright (c) 2008 TrafficBroker <http://www.trafficbroker.co.uk>
 * Licensed under GPL and MIT licenses
 * 
-* hSlides is an horizontal accordion navigation, sliding the panels around to reveal one of interest.
+* hSlides is an horizontal accordion navigation, sliding the panels around to reveal one of interest. It's very flexible on how to move the panels.
 *
 * Sample Configuration:
 * // this is the minimum configuration needed
@@ -42,7 +42,7 @@
 * $.fn.hSlides.defaults.easing = 'easeOutCubic';
 * 
 * @param  settings  An object with configuration options
-* @author    Suso Guez (Jesus Carrera Rodriguez) <suso.guez@frontendmatters.com>
+* @author    Jesus Carrera <jesus.carrera@frontendmatters.com>
 */
 (function($) {
 $.fn.hSlides = function(settings) {
